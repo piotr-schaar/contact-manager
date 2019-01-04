@@ -16,7 +16,23 @@
     padding: 0;
   }
 }
+$color1: #feda6a;
+$color2: #393f4d;
 
-
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  padding: 10px 30px;
+  flex-direction: column;
+  margin: 0;
+  overflow: hidden;
+  &.light {
+    background: $color1;
+  }
+  &.dark {
+    background: $color2;
+  }
+}
 </style>
 

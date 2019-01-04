@@ -1,23 +1,35 @@
 <template>
-  <div>
-    <h2 v-text="pageTitle"></h2>
-   <Contacts :contacts=contacts ></Contacts>
+  <div class="wrapper light">
+    <Nav v-on:toggleSearchBar="toggleBar" :pageTitle="pageTitle"></Nav>
+    <SearchBar v-if="searchBar==true"></SearchBar>
+    <Contacts :contacts="contacts"></Contacts>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import Contacts from "@/components/Contacts.vue"
- export default {
+import Nav from "@/components/Nav.vue";
+import Contacts from "@/components/Contacts.vue";
+import SearchBar from "@/components/SearchBar.vue"; 
+export default {
   name: "Home",
   components: {
-      Contacts,
+    Contacts,
+    Nav,
+    SearchBar
   },
   data() {
     return {
       pageTitle: "Connector",
-      contacts: []
+      contacts: [],
+      searchBar: false
     };
+  },
+  methods: {
+    toggleBar() {
+      this.searchBar = true;
+      console.log(this.searchBar)
+    }
   },
   mounted() {
     axios
