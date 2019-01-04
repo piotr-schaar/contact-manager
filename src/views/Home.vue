@@ -1,21 +1,18 @@
 <template>
   <div>
     <h2 v-text="pageTitle"></h2>
-    <ul>
-        <li v-for="contact in contacts" v-bind:key="contact.id">
-            <p>{{contact.name}}</p>
-            <p>Mail: {{contact.email}}</p>
-            <p>Street: {{contact.address.street}}</p>
-            <p>City: {{contact.address.city}}</p>
-        </li>
-    </ul>
+   <Contacts :contacts=contacts ></Contacts>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-export default {
+import Contacts from "@/components/Contacts.vue"
+ export default {
   name: "Home",
+  components: {
+      Contacts,
+  },
   data() {
     return {
       pageTitle: "Connector",
