@@ -14,13 +14,6 @@ export default {
       required: true
     },
   },
-  methods: {
-      toggleBar: function(e) {
-        this.searchBar = !this.searchBar;
-        console.log(this.searchBar)
-        e.preventDefault();
-      }
-  }
 };
 </script>
 

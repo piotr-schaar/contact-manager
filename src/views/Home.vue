@@ -1,8 +1,12 @@
 <template>
-  <div class="wrapper light">
-    <Nav v-on:toggleSearchBar="toggleBar" :pageTitle="pageTitle"></Nav>
-    <SearchBar v-if="searchBar==true"></SearchBar>
-    <Contacts :contacts="contacts"></Contacts>
+  <div>
+    <transition name="slide">
+      <SearchBar v-if="searchBar==true" @clicked="addContact"></SearchBar>
+    </transition>
+    <div class="wrapper light">
+      <Nav v-on:toggleSearchBar="searchBar = !searchBar" :pageTitle="pageTitle"></Nav>
+      <Contacts :contacts="contacts"></Contacts>
+    </div>
   </div>
 </template>
 
@@ -10,7 +14,7 @@
 import axios from "axios";
 import Nav from "@/components/Nav.vue";
 import Contacts from "@/components/Contacts.vue";
-import SearchBar from "@/components/SearchBar.vue"; 
+import SearchBar from "@/components/SearchBar.vue";
 export default {
   name: "Home",
   components: {
@@ -28,7 +32,10 @@ export default {
   methods: {
     toggleBar() {
       this.searchBar = true;
-      console.log(this.searchBar)
+      console.log(this.searchBar);
+    },
+    addContact(value) {
+        this.contacts.push(value)
     }
   },
   mounted() {
@@ -39,5 +46,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.slide-enter-active,
+.slide-leave-active {
+  transition: margin-top 0.5s ease;
+}
+.slide-enter,
+.slide-leave-to {
+  margin-top: -400px;
+}
 </style>
