@@ -2,8 +2,20 @@
   <div class="searchWrapper">
     <h2>Add contact</h2>
     <form class="searchForm">
-      <input v-model="newContact.name" class="input-contact" type="text" placeholder="Name">
-      <input v-model="newContact.email" class="input-contact" type="text" placeholder="Email">
+      <input
+        v-model="newContact.name"
+        class="input-contact"
+        type="text"
+        placeholder="Name"
+        required
+      >
+      <input
+        v-model="newContact.email"
+        class="input-contact"
+        type="text"
+        placeholder="Email"
+        required
+      >
       <input v-model="newContact.street" class="input-contact" type="text" placeholder="Street">
       <input v-model="newContact.city" class="input-contact" type="text" placeholder="City">
       <input v-on:click="addContact" class="button submitButton" type="submit" value="Submit">
@@ -28,7 +40,20 @@ export default {
   },
   methods: {
     addContact: function(e) {
-      this.$emit("clicked", this.newContact);
+      if (this.newContact.name.length > 3) {
+        this.$emit("clicked", this.newContact);
+        this.newContact = {
+          name: "",
+          email: "",
+          address: {
+            street: "",
+            city: ""
+          }
+        };
+      } else {
+          alert('Name cannot be shorter than 3 letters');
+      }
+
       e.preventDefault();
     }
   }
