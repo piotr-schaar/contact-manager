@@ -39,14 +39,22 @@ export default {
     },
     addContact(value) {
       this.contacts.unshift(value);
+      this.saveContacts();
     },
     deleteContact(value) {
       this.contacts.splice(this.contacts.indexOf(value), 1);
+      this.saveContacts();
+
     },
     addToFavorited(value) {
       this.favoriteContacts.push(value);
+    },
+    saveContacts() {
+      let parsed = JSON.stringify(this.contacts);
+      localStorage.setItem("contacts", parsed);
     }
   },
+
   mounted() {
     axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
       this.contacts = response.data;
@@ -55,6 +63,11 @@ export default {
       error => {
         (this.isLoading = true), error;
       };
+  },
+  mounted() {
+    if (localStorage.getItem("contacts")) {
+      this.contacts = JSON.parse(localStorage.getItem("contacts"));
+    }
   }
 };
 </script>
