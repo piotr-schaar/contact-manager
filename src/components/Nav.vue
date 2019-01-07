@@ -12,8 +12,8 @@ export default {
     pageTitle: {
       type: String,
       required: true
-    },
-  },
+    }
+  }
 };
 </script>
 

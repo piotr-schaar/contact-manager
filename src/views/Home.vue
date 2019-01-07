@@ -5,7 +5,7 @@
     </transition>
     <div class="wrapper light">
       <Nav v-on:toggleSearchBar="searchBar = !searchBar" :pageTitle="pageTitle"></Nav>
-      <Contacts :contacts="contacts" @clicked="deleteContact"></Contacts>
+      <Contacts :contacts="contacts" @deleted="deleteContact" @favorited="addToFavorited"></Contacts>
     </div>
   </div>
 </template>
@@ -28,7 +28,8 @@ export default {
       contacts: [],
       searchBar: false,
       isLoading: false,
-      error: null
+      error: null,
+      favoriteContacts: []
     };
   },
   methods: {
@@ -40,8 +41,10 @@ export default {
       this.contacts.unshift(value);
     },
     deleteContact(value) {
-      console.log(value)
-      this.contacts.splice(this.contacts.indexOf(value),1);
+      this.contacts.splice(this.contacts.indexOf(value), 1);
+    },
+    addToFavorited(value) {
+      this.favoriteContacts.push(value);
     }
   },
   mounted() {
