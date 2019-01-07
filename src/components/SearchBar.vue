@@ -51,7 +51,7 @@ export default {
           }
         };
       } else {
-          alert('Name cannot be shorter than 3 letters');
+        alert("Name cannot be shorter than 3 letters");
       }
       e.preventDefault();
     }
@@ -70,14 +70,23 @@ export default {
   overflow: hidden;
   .input-contact {
     width: 100%;
-    padding: 10px 25px;
-    border: 2px solid #393f4d;
-    border-radius: 25px;
+    padding: 10px 25px 10px 15px;
     font-size: 1rem;
-    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.35);
   }
   h2 {
     margin-top: 0;
+    color: #393f4d;
+  }
+}
+.button {
+  padding: 15px 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  &.submitButton {
+    background: #393f4d;
+    color: white;
   }
 }
 .searchForm {

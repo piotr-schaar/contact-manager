@@ -5,7 +5,7 @@
     </transition>
     <div class="wrapper light">
       <Nav v-on:toggleSearchBar="searchBar = !searchBar" :pageTitle="pageTitle"></Nav>
-      <Contacts :contacts="contacts"></Contacts>
+      <Contacts :contacts="contacts" @clicked="deleteContact"></Contacts>
     </div>
   </div>
 </template>
@@ -37,20 +37,21 @@ export default {
       console.log(this.searchBar);
     },
     addContact(value) {
-        this.contacts.push(value)
+      this.contacts.unshift(value);
+    },
+    deleteContact(value) {
+      console.log(value)
+      this.contacts.splice(this.contacts.indexOf(value),1);
     }
   },
   mounted() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((response) => {
-        this.contacts = response.data;
-        this.isLoading = true;
-      }),
+    axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
+      this.contacts = response.data;
+      this.isLoading = true;
+    }),
       error => {
-        this.isLoading = true,
-        error
-      }
+        (this.isLoading = true), error;
+      };
   }
 };
 </script>
