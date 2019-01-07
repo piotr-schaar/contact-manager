@@ -53,7 +53,6 @@ export default {
       } else {
           alert('Name cannot be shorter than 3 letters');
       }
-
       e.preventDefault();
     }
   }

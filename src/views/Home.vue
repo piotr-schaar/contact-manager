@@ -26,7 +26,9 @@ export default {
     return {
       pageTitle: "Connector",
       contacts: [],
-      searchBar: false
+      searchBar: false,
+      isLoading: false,
+      error: null
     };
   },
   methods: {
@@ -41,7 +43,14 @@ export default {
   mounted() {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
-      .then(response => (this.contacts = response.data));
+      .then((response) => {
+        this.contacts = response.data;
+        this.isLoading = true;
+      }),
+      error => {
+        this.isLoading = true,
+        error
+      }
   }
 };
 </script>
