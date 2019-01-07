@@ -1,7 +1,6 @@
 <template>
-  <ul class="list">
-    <transition-group name="list-complete">
-      <li class="item list-complete-item" v-for="contact in contacts" v-bind:key="contact.id">
+    <transition-group name="list-complete" tag="ul" class="list">
+      <li class="item list-complete-item " v-for="contact in contacts" v-bind:key="contact.name">
         <div class="item__desc">
           <p class="paragraph">
             <span class="bold">{{contact.name}}</span>
@@ -22,11 +21,14 @@
 
         <div class="buttonWrapper">
           <button class="button deleteButton" v-on:click="deleteContact(contact)">X</button>
-          <button class="button favoriteButton" v-on:click="addToFavorite(contact)" v-html="favoritedIcon"></button>
+          <button
+            class="button favoriteButton"
+            v-on:click="addToFavorite(contact)"
+            v-html="favoritedIcon"
+          ></button>
         </div>
       </li>
     </transition-group>
-  </ul>
 </template>
 
 <script>
@@ -38,13 +40,14 @@ export default {
       required: true
     }
   },
+ 
   data() {
     return {
       favoritedIcon: `<svg class="heart" viewBox="0 0 32 29.6">
           <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
           c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
         </svg> `
-  }
+    };
   },
   methods: {
     deleteContact: function(contact) {
@@ -117,8 +120,9 @@ export default {
   position: absolute;
 }
 .heart {
-    &.active{
-      fill: red;
-    }
+  fill: white;
+  &.active {
+    fill: red;
+  }
 }
 </style>
