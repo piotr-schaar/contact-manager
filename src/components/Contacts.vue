@@ -100,13 +100,15 @@ export default {
     }
     .buttonWrapper {
       display: flex;
-      height: 50px;
       flex-direction: column;
       .button {
         color: #393f4d;
         background: none;
         padding: 20px;
         border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         &.deleteButton {
           font-size: 20px;
           &:focus,
@@ -136,6 +138,10 @@ export default {
   fill: white;
 }
 .favoriteButton {
+  .heart{
+    width: 25px;
+    height: 25px;
+  }
   &.active {
     .heart {
       fill: red;
