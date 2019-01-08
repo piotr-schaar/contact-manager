@@ -4,7 +4,11 @@
       <SearchBar v-if="searchBar==true" @clicked="addContact"></SearchBar>
     </transition>
     <transition name="slideRight">
-      <Favorite :favoriteContacts="favoriteContacts" v-if="FavoritesWrapper == true" v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"></Favorite>
+      <Favorite
+        :favoriteContacts="favoriteContacts"
+        v-if="FavoritesWrapper == true"
+        v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
+      ></Favorite>
     </transition>
 
     <div class="wrapper light">
@@ -59,7 +63,9 @@ export default {
     },
     deleteContact(value) {
       this.contacts.splice(this.contacts.indexOf(value), 1);
+      this.favoriteContacts.splice(this.contacts.indexOf(value), 1);
       this.saveContacts();
+      this.saveFavoriteContacts();
     },
     addToFavorited(value) {
       value.isFavorite = true;
