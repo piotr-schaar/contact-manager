@@ -2,7 +2,6 @@
   <nav class="nav">
     <h2 class="page-header">{{pageTitle}}</h2>
     <button class="add" v-on:click="$emit('toggleSearchBar')"></button>
-    <button class="toFavorites" v-on:click="$emit('toggleFavoritesWrapper')">HEART</button>
   </nav>
 </template>
 
@@ -31,15 +30,15 @@ export default {
   background: none;
   border: none;
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   &:focus {
     outline: none;
   }
   &:before,
   &:after {
     content: "";
-    width: 25px;
+    width: 80%;
     position: absolute;
     height: 5px;
     top: 50%;
