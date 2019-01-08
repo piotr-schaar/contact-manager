@@ -16,7 +16,6 @@
         <p class="paragraph">
           <span class="bold">City:</span>
           {{contact.address.city}}
-          {{contact.isFavorite}}
         </p>
       </div>
 
