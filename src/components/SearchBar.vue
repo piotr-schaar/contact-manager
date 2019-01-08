@@ -16,8 +16,8 @@
         placeholder="Email"
         required
       >
-      <input v-model="newContact.street" class="input-contact" type="text" placeholder="Street">
-      <input v-model="newContact.city" class="input-contact" type="text" placeholder="City">
+      <input v-model="newContact.address.street" class="input-contact" type="text" placeholder="Street">
+      <input v-model="newContact.address.city" class="input-contact" type="text" placeholder="City">
       <input v-on:click="addContact" class="button submitButton" type="submit" value="Submit">
     </form>
   </div>
@@ -36,7 +36,7 @@ export default {
           street: "",
           city: ""
         },
-        isFavorite: false,
+        isFavorite: false
       }
     };
   },
@@ -44,6 +44,14 @@ export default {
     addContact: function(e) {
       if (this.newContact.name.length > 3) {
         this.$emit("clicked", this.newContact);
+        this.newContact = {
+          name: "",
+          email: "",
+          address: {
+            street: "",
+            city: ""
+          }
+        };
       } else {
         alert("Name cannot be shorter than 3 letters");
       }

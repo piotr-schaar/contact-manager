@@ -61,18 +61,9 @@ export default {
     saveContacts() {
       let parsed = JSON.stringify(this.contacts);
       localStorage.setItem("contacts", parsed);
-    }
+    },
   },
 
-  mounted() {
-    axios.get("https://jsonplaceholder.typicode.com/users").then(response => {
-      this.contacts = response.data;
-      this.isLoading = true;
-    }),
-      error => {
-        (this.isLoading = true), error;
-      };
-  },
   mounted() {
     if (localStorage.getItem("contacts")) {
       this.contacts = JSON.parse(localStorage.getItem("contacts"));
