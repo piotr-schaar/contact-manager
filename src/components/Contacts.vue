@@ -1,34 +1,36 @@
 <template>
-    <transition-group name="list-complete" tag="ul" class="list">
-      <li class="item list-complete-item " v-for="contact in contacts" v-bind:key="contact.name">
-        <div class="item__desc">
-          <p class="paragraph">
-            <span class="bold">{{contact.name}}</span>
-          </p>
-          <p class="paragraph">
-            <span class="bold">Mail:</span>
-            {{contact.email}}
-          </p>
-          <p class="paragraph">
-            <span class="bold">Street:</span>
-            {{contact.address.street}}
-          </p>
-          <p class="paragraph">
-            <span class="bold">City:</span>
-            {{contact.address.city}}
-          </p>
-        </div>
+  <transition-group name="list-complete" tag="ul" class="list">
+    <li class="item list-complete-item" v-for="contact in contacts" v-bind:key="contact.name">
+      <div class="item__desc">
+        <p class="paragraph">
+          <span class="bold">{{contact.name}}</span>
+        </p>
+        <p class="paragraph">
+          <span class="bold">Mail:</span>
+          {{contact.email}}
+        </p>
+        <p class="paragraph">
+          <span class="bold">Street:</span>
+          {{contact.address.street}}
+        </p>
+        <p class="paragraph">
+          <span class="bold">City:</span>
+          {{contact.address.city}}
+          {{contact.isFavorite}}
+        </p>
+      </div>
 
-        <div class="buttonWrapper">
-          <button class="button deleteButton" v-on:click="deleteContact(contact)">X</button>
-          <button
-            class="button favoriteButton"
-            v-on:click="addToFavorite(contact)"
-            v-html="favoritedIcon"
-          ></button>
-        </div>
-      </li>
-    </transition-group>
+      <div class="buttonWrapper">
+        <button class="button deleteButton" v-on:click="deleteContact(contact)">X</button>
+        <button
+          class="button favoriteButton"
+          v-on:click="clickedFavorite(contact)"
+          v-html="favoritedIcon"
+          v-bind:class="getClass(contact)"
+        ></button>
+      </div>
+    </li>
+  </transition-group>
 </template>
 
 <script>
@@ -40,7 +42,7 @@ export default {
       required: true
     }
   },
- 
+
   data() {
     return {
       favoritedIcon: `<svg class="heart" viewBox="0 0 32 29.6">
@@ -50,13 +52,24 @@ export default {
     };
   },
   methods: {
+    getClass(contact) {
+      return {
+        active: contact.isFavorite,
+        noActive: !contact.isFavorite
+      };
+    },
     deleteContact: function(contact) {
       this.$emit("deleted", contact);
     },
-    addToFavorite: function(contact) {
-      this.$emit("favorited", contact);
+    clickedFavorite: function(contact) {
+      if (contact.isFavorite == false) {
+        this.$emit("favorited", contact);
+      } else {
+        this.$emit("unFavorited", contact);
+      }
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 
@@ -119,10 +132,15 @@ export default {
 .list-complete-leave-active {
   position: absolute;
 }
+
 .heart {
   fill: white;
+}
+.favoriteButton {
   &.active {
-    fill: red;
+    .heart {
+      fill: red;
+    }
   }
 }
 </style>

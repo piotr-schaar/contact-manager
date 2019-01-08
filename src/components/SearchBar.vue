@@ -29,12 +29,14 @@ export default {
   data() {
     return {
       newContact: {
+        id: "",
         name: "",
         email: "",
         address: {
           street: "",
           city: ""
-        }
+        },
+        isFavorite: false,
       }
     };
   },
@@ -42,14 +44,6 @@ export default {
     addContact: function(e) {
       if (this.newContact.name.length > 3) {
         this.$emit("clicked", this.newContact);
-        this.newContact = {
-          name: "",
-          email: "",
-          address: {
-            street: "",
-            city: ""
-          }
-        };
       } else {
         alert("Name cannot be shorter than 3 letters");
       }

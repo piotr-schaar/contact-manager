@@ -5,7 +5,12 @@
     </transition>
     <div class="wrapper light">
       <Nav v-on:toggleSearchBar="searchBar = !searchBar" :pageTitle="pageTitle"></Nav>
-      <Contacts :contacts="contacts" @deleted="deleteContact" @favorited="addToFavorited"></Contacts>
+      <Contacts
+        :contacts="contacts"
+        @deleted="deleteContact"
+        @favorited="addToFavorited"
+        @unFavorited="unFavorited"
+      ></Contacts>
     </div>
   </div>
 </template>
@@ -44,10 +49,14 @@ export default {
     deleteContact(value) {
       this.contacts.splice(this.contacts.indexOf(value), 1);
       this.saveContacts();
-
     },
     addToFavorited(value) {
+      value.isFavorite = true;
       this.favoriteContacts.push(value);
+    },
+    unFavorited(value) {
+      value.isFavorite = false;
+      this.favoriteContacts.splice(this.contacts.indexOf(value), 1);
     },
     saveContacts() {
       let parsed = JSON.stringify(this.contacts);
