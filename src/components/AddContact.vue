@@ -1,7 +1,7 @@
 <template>
-  <div class="searchWrapper">
+  <div class="addContactWrapper">
     <h2>Add contact</h2>
-    <form class="searchForm">
+    <form class="addContactForm">
       <input
         v-model="newContact.name"
         class="input-contact"
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "SearchBar",
+  name: "AddContact",
   data() {
     return {
       newContact: {
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.searchWrapper {
+.addContactWrapper {
   height: 400px;
   background: white;
   display: flex;
@@ -91,7 +91,7 @@ export default {
     color: white;
   }
 }
-.searchForm {
+.addContactForm {
   height: 100%;
   display: flex;
   flex-direction: column;

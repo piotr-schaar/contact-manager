@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="slideTop">
-      <SearchBar v-if="searchBar==true" @clicked="addContact"></SearchBar>
+      <AddContact v-if="addContactBar==true" @clicked="addContact"></AddContact>
     </transition>
     <transition name="slideRight">
       <Favorite
@@ -11,9 +11,9 @@
       ></Favorite>
     </transition>
 
-    <div class="wrapper light">
+    <div class="wrapper">
       <Nav
-        v-on:toggleSearchBar="searchBar = !searchBar"
+        v-on:toggleAddContactBar="addContactBar = !addContactBar"
         v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
         :pageTitle="pageTitle"
       ></Nav>
@@ -31,21 +31,21 @@
 import axios from "axios";
 import Nav from "@/components/Nav.vue";
 import Contacts from "@/components/Contacts.vue";
-import SearchBar from "@/components/SearchBar.vue";
+import AddContact from "@/components/AddContact.vue";
 import Favorite from "@/components/Favorite.vue";
 export default {
   name: "Home",
   components: {
     Contacts,
     Nav,
-    SearchBar,
+    AddContact,
     Favorite
   },
   data() {
     return {
       pageTitle: "Connector",
       contacts: [],
-      searchBar: false,
+      addContactBar: false,
       FavoritesWrapper: false,
       isLoading: false,
       error: null,
@@ -54,8 +54,8 @@ export default {
   },
   methods: {
     toggleBar() {
-      this.searchBar = true;
-      console.log(this.searchBar);
+      this.addContactBar = true;
+      console.log(this.addContactBar);
     },
     addContact(value) {
       this.contacts.unshift(value);

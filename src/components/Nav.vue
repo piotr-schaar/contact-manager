@@ -1,7 +1,7 @@
 <template>
   <nav class="nav">
     <h2 class="page-header">{{pageTitle}}</h2>
-    <button class="button addButton" v-on:click="$emit('toggleSearchBar')"></button>
+    <button class="button addButton" v-on:click="$emit('toggleAddContactBar')"></button>
     <button
       class="button toFavoritesButton"
       v-on:click="$emit('toggleFavoritesWrapper')"

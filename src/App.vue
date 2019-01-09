@@ -27,12 +27,7 @@ $color2: #393f4d;
   flex-direction: column;
   margin: 0;
   overflow: hidden;
-  &.light {
-    background: $color1;
-  }
-  &.dark {
-    background: $color2;
-  }
+  background: $color1;
 }
 </style>
 
