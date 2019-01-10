@@ -159,7 +159,7 @@ export default {
             left: 50%;
             transform: translate(-50%, -50%);
             background: #393f4d;
-            opacity:0.9;
+            opacity: 0.9;
           }
           &:before {
             transform: translate(-50%, -50%) rotate(45deg);
@@ -167,6 +167,7 @@ export default {
           &:after {
             transform: translate(-50%, -50%) rotate(-45deg);
           }
+    
           &:focus,
           &:active {
             outline: none;

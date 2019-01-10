@@ -24,7 +24,7 @@ $color2: #393f4d;
   @media (min-width: 1024px) {
     margin: 0 auto;
     width: 1024px;
-    padding:30px 15px;
+    padding: 30px 15px;
   }
 }
 .wrapper {
@@ -34,6 +34,11 @@ $color2: #393f4d;
   flex-direction: column;
   overflow: hidden;
   background: $color1;
+}
+.button {
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>
 
