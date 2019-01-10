@@ -1,4 +1,5 @@
 # contact-manager
+LIVE VERSION : https://contact-manager-pschaar.netlify.com/
 
 ## Project setup
 ```
