@@ -6,8 +6,8 @@
     <transition name="slideRight">
       <Favorites
         :favoriteContacts="favoriteContacts"
-        v-if="FavoritesWrapper == true"
-        v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
+        v-if="favoritesWrapper == true"
+        v-on:toggleFavoritesWrapper="favoritesWrapper = !favoritesWrapper"
       ></Favorites>
     </transition>
 
@@ -15,7 +15,7 @@
       <div class="container">
         <Nav
           v-on:toggleAddContactBar="addContactBar = !addContactBar"
-          v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
+          v-on:toggleFavoritesWrapper="favoritesWrapper = !favoritesWrapper"
           :pageTitle="pageTitle"
         ></Nav>
         <Contacts
@@ -48,7 +48,7 @@ export default {
       pageTitle: "Connector",
       contacts: [],
       addContactBar: false,
-      FavoritesWrapper: false,
+      favoritesWrapper: false,
       isLoading: false,
       error: null,
       favoriteContacts: []

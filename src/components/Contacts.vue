@@ -167,7 +167,7 @@ export default {
           &:after {
             transform: translate(-50%, -50%) rotate(-45deg);
           }
-    
+
           &:focus,
           &:active {
             outline: none;

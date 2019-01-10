@@ -2,11 +2,16 @@
   <nav class="nav">
     <h2 class="page-header">{{pageTitle}}</h2>
     <div class="buttonWrapper">
-      <button class="button addButton" v-on:click="$emit('toggleAddContactBar')"></button>
+      <button
+        class="button addButton"
+        v-on:click="$emit('toggleAddContactBar') "
+        title="Add contact"
+      ></button>
       <button
         class="button toFavoritesButton"
         v-on:click="$emit('toggleFavoritesWrapper')"
         v-html="favoritedIcon"
+        title="Favorites"
       ></button>
     </div>
   </nav>
