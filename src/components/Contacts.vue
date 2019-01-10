@@ -3,7 +3,7 @@
     <li class="item list-complete-item" v-for="contact in contacts" v-bind:key="contact.name">
       <div class="item__desc">
         <p class="paragraph">
-          <span class="bold">{{contact.name}}</span>
+          <span class="name bold">{{contact.name}}</span>
         </p>
         <p class="paragraph">
           <span class="bold">Mail:</span>
@@ -20,7 +20,7 @@
       </div>
 
       <div class="buttonWrapper">
-        <button class="button deleteButton" v-on:click="deleteContact(contact)">X</button>
+        <button class="button deleteButton" v-on:click="deleteContact(contact)"></button>
         <button
           class="button favoriteButton"
           v-on:click="clickedFavorite(contact)"
@@ -79,13 +79,37 @@ export default {
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
   .item {
     padding: 15px 0;
     width: 100%;
     color: #393f4d;
     font-size: 1.1em;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 100%;
+      border-radius: 15px;
+      background: white;
+      bottom: 0;
+      left: 0;
+      opacity: 0.7;
+    }
+    @media (min-width: 768px) {
+      &:nth-of-type(odd) {
+        padding-right: 15px;
+      }
+      &:nth-of-type(even) {
+        padding-left: 15px;
+      }
+    }
     &__desc {
       display: flex;
       flex-direction: column;
@@ -94,13 +118,22 @@ export default {
       width: 80%;
       margin: 10px 0;
       white-space: normal;
+      font-size: 0.8em;
+      @media (min-width: 768px) {
+        width: 100%;
+        font-size: 1.1em;
+      }
+      .name {
+        font-size: 1.4em;
+      }
       .bold {
         font-weight: 600;
       }
     }
     .buttonWrapper {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
       .button {
         color: #393f4d;
         background: none;
@@ -109,11 +142,45 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 50px;
         &.deleteButton {
           font-size: 20px;
+          width: 25px;
+          padding: 20px;
+          position: relative;
+          &:before,
+          &:after {
+            content: "";
+            height: 3px;
+            width: 60%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #393f4d;
+            opacity:0.9;
+          }
+          &:before {
+            transform: translate(-50%, -50%) rotate(45deg);
+          }
+          &:after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
           &:focus,
           &:active {
             outline: none;
+          }
+        }
+        &.favoriteButton {
+          padding: 10px;
+          .heart {
+            width: 25px;
+            height: 25px;
+          }
+          &.active {
+            .heart {
+              fill: red;
+            }
           }
         }
       }
@@ -136,16 +203,5 @@ export default {
 
 .heart {
   fill: white;
-}
-.favoriteButton {
-  .heart{
-    width: 25px;
-    height: 25px;
-  }
-  &.active {
-    .heart {
-      fill: red;
-    }
-  }
 }
 </style>

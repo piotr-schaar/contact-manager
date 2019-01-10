@@ -1,5 +1,5 @@
 <template>
-  <div class="addContactWrapper">
+  <div class="addContactWrapper container">
     <h2>Add contact</h2>
     <form class="addContactForm">
       <input
@@ -16,7 +16,12 @@
         placeholder="Email"
         required
       >
-      <input v-model="newContact.address.street" class="input-contact" type="text" placeholder="Street">
+      <input
+        v-model="newContact.address.street"
+        class="input-contact"
+        type="text"
+        placeholder="Street"
+      >
       <input v-model="newContact.address.city" class="input-contact" type="text" placeholder="City">
       <input v-on:click="addContact" class="button submitButton" type="submit" value="Submit">
     </form>
@@ -66,14 +71,15 @@ export default {
   height: 400px;
   background: white;
   display: flex;
-  width: 100%;
-  padding: 30px 30px;
   flex-direction: column;
   overflow: hidden;
+  padding: 30px 30px;
   .input-contact {
     width: 100%;
-    padding: 10px 25px 10px 15px;
+    padding: 10px 25px 12px 15px;
     font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #393f4d;
   }
   h2 {
     margin-top: 0;

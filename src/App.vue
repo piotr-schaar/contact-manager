@@ -18,14 +18,20 @@
 }
 $color1: #feda6a;
 $color2: #393f4d;
-
+.container {
+  padding: 0 30px;
+  margin: 0;
+  @media (min-width: 1024px) {
+    margin: 0 auto;
+    width: 1024px;
+    padding:30px 15px;
+  }
+}
 .wrapper {
   display: flex;
   min-height: 100vh;
   width: 100%;
-  padding: 10px 30px;
   flex-direction: column;
-  margin: 0;
   overflow: hidden;
   background: $color1;
 }

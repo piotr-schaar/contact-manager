@@ -1,12 +1,14 @@
 <template>
   <nav class="nav">
     <h2 class="page-header">{{pageTitle}}</h2>
-    <button class="button addButton" v-on:click="$emit('toggleAddContactBar')"></button>
-    <button
-      class="button toFavoritesButton"
-      v-on:click="$emit('toggleFavoritesWrapper')"
-      v-html="favoritedIcon"
-    ></button>
+    <div class="buttonWrapper">
+      <button class="button addButton" v-on:click="$emit('toggleAddContactBar')"></button>
+      <button
+        class="button toFavoritesButton"
+        v-on:click="$emit('toggleFavoritesWrapper')"
+        v-html="favoritedIcon"
+      ></button>
+    </div>
   </nav>
 </template>
 
@@ -35,9 +37,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 15px 0;
 }
 .page-header {
   color: #393f4d;
+  font-size: 2em;
+  margin: 0;
+}
+.buttonWrapper {
+  display: flex;
 }
 .button {
   background: none;

@@ -4,25 +4,27 @@
       <AddContact v-if="addContactBar==true" @clicked="addContact"></AddContact>
     </transition>
     <transition name="slideRight">
-      <Favorite
+      <Favorites
         :favoriteContacts="favoriteContacts"
         v-if="FavoritesWrapper == true"
         v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
-      ></Favorite>
+      ></Favorites>
     </transition>
 
     <div class="wrapper">
-      <Nav
-        v-on:toggleAddContactBar="addContactBar = !addContactBar"
-        v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
-        :pageTitle="pageTitle"
-      ></Nav>
-      <Contacts
-        :contacts="contacts"
-        @deleted="deleteContact"
-        @favorited="addToFavorited"
-        @unFavorited="unFavorited"
-      ></Contacts>
+      <div class="container">
+        <Nav
+          v-on:toggleAddContactBar="addContactBar = !addContactBar"
+          v-on:toggleFavoritesWrapper="FavoritesWrapper = !FavoritesWrapper"
+          :pageTitle="pageTitle"
+        ></Nav>
+        <Contacts
+          :contacts="contacts"
+          @deleted="deleteContact"
+          @favorited="addToFavorited"
+          @unFavorited="unFavorited"
+        ></Contacts>
+      </div>
     </div>
   </div>
 </template>
@@ -32,14 +34,14 @@ import axios from "axios";
 import Nav from "@/components/Nav.vue";
 import Contacts from "@/components/Contacts.vue";
 import AddContact from "@/components/AddContact.vue";
-import Favorite from "@/components/Favorite.vue";
+import Favorites from "@/components/Favorites.vue";
 export default {
   name: "Home",
   components: {
     Contacts,
     Nav,
     AddContact,
-    Favorite
+    Favorites
   },
   data() {
     return {
