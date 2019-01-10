@@ -1,6 +1,6 @@
 <template>
   <transition-group name="list-complete" tag="ul" class="list">
-    <li class="item list-complete-item" v-for="contact in contacts" v-bind:key="contact.name">
+    <li class="item list-complete-item" v-for="contact in contacts" v-bind:key="contact.id">
       <div class="item__desc">
         <p class="paragraph">
           <span class="name bold">{{contact.name}}</span>
@@ -154,6 +154,7 @@ export default {
             height: 3px;
             width: 60%;
             position: absolute;
+            border-radius: 25px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);

@@ -77,7 +77,8 @@ export default {
     },
     unFavorited(value) {
       value.isFavorite = false;
-      this.favoriteContacts.splice(this.contacts.indexOf(value), 1);
+      let index = this.favoriteContacts.findIndex(o => o.id === value.id);
+      if (index !== -1) this.favoriteContacts.splice(index, 1);
       this.saveContacts();
       this.saveFavoriteContacts();
     },

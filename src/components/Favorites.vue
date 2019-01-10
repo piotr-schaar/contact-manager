@@ -3,7 +3,7 @@
     <div class="container">
       <button class="button returnButton" v-on:click="$emit('toggleFavoritesWrapper')"></button>
       <ul class="list">
-        <li class="item" v-for="contact in favoriteContacts" v-bind:key="contact.name">
+        <li class="item" v-for="contact in favoriteContacts" v-bind:key="contact.id">
           <div class="item__desc">
             <p class="paragraph">
               <span class="bold">{{contact.name}}</span>
@@ -64,7 +64,7 @@ export default {
     border: solid #393f4d;
     border-width: 0 3px 3px 0;
     display: inline-block;
-    padding: 3px;
+    padding: 10px;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
   }

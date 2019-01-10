@@ -29,12 +29,13 @@
 </template>
 
 <script>
+import { uuid } from 'vue-uuid'
 export default {
   name: "AddContact",
   data() {
     return {
       newContact: {
-        id: "",
+        id: uuid.v1(),
         name: "",
         email: "",
         address: {
@@ -50,6 +51,7 @@ export default {
       if (this.newContact.name.length > 3) {
         this.$emit("clicked", this.newContact);
         this.newContact = {
+          id: uuid.v1(),
           name: "",
           email: "",
           address: {
