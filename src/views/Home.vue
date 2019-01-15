@@ -106,22 +106,5 @@ export default {
 </script>
 
 <style>
-.slideTop-enter-active,
-.slideTop-leave-active {
-  transition: margin-top 0.5s ease;
-}
-.slideTop-enter,
-.slideTop-leave-to {
-  margin-top: -400px;
-}
-.slideRight-enter-active,
-.slideRight-leave-active {
-  transition: all 0.3s ease;
-}
 
-.slideRight-enter,
-.slideRight-leave-to {
-  transform: translateX(100vh);
-  opacity: 0;
-}
 </style>
