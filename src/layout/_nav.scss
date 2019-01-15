@@ -1,0 +1,11 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px 0;
+  &__header {
+    color: $color2;
+    font-size: 2em;
+    margin: 0;
+  }
+}

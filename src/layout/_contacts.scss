@@ -1,0 +1,81 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  .item {
+    padding: 15px 0;
+    width: 100%;
+    color: $color2;
+    font-size: 1.1em;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      height: 3px;
+      width: 100%;
+      border-radius: 15px;
+      background: $color3;
+      bottom: 0;
+      left: 0;
+      opacity: 0.7;
+    }
+    @media (min-width: 768px) {
+      &:nth-of-type(odd) {
+        padding-right: 15px;
+      }
+      &:nth-of-type(even) {
+        padding-left: 15px;
+      }
+    }
+    &__desc {
+      display: flex;
+      flex-direction: column;
+    }
+    &__para {
+      width: 80%;
+      margin: 10px 0;
+      white-space: normal;
+      font-size: 0.8em;
+      @media (min-width: 768px) {
+        width: 100%;
+        font-size: 1.1em;
+      }
+      .name {
+        font-size: 1.4em;
+      }
+      .bold {
+        font-weight: 600;
+      }
+    }
+    .buttonWrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+.list-complete-item {
+  transition: all 1s;
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-complete-enter, .list-complete-leave-to
+  /* .list-complete-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.list-complete-leave-active {
+  position: absolute;
+}
+
+.heart {
+  fill: $color3;
+}

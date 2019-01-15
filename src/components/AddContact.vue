@@ -1,29 +1,29 @@
 <template>
-  <div class="addContactWrapper container">
-    <h2>Add contact</h2>
-    <form class="addContactForm">
+  <div class="addContact container">
+    <p class="addContact__title">Add contact</p>
+    <form class="addContact__form">
       <input
         v-model="newContact.name"
-        class="input-contact"
+        class="addContact__input"
         type="text"
         placeholder="Name"
         required
       >
       <input
         v-model="newContact.email"
-        class="input-contact"
+        class="addContact__input"
         type="text"
         placeholder="Email"
         required
       >
       <input
         v-model="newContact.address.street"
-        class="input-contact"
+        class="addContact__input"
         type="text"
         placeholder="Street"
       >
-      <input v-model="newContact.address.city" class="input-contact" type="text" placeholder="City">
-      <input v-on:click="addContact" class="button submitButton" type="submit" value="Submit">
+      <input v-model="newContact.address.city" class="addContact__input" type="text" placeholder="City">
+      <input v-on:click="addContact" class="button button-submit" type="submit" value="Submit">
     </form>
   </div>
 </template>
@@ -69,40 +69,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.addContactWrapper {
-  height: 400px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 30px 30px;
-  .input-contact {
-    width: 100%;
-    padding: 10px 25px 12px 15px;
-    font-size: 1rem;
-    border: none;
-    border-bottom: 2px solid #393f4d;
-  }
-  h2 {
-    margin-top: 0;
-    color: #393f4d;
-  }
-}
-.button {
-  padding: 15px 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  &.submitButton {
-    background: #393f4d;
-    color: white;
-  }
-}
-.addContactForm {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 </style>

@@ -1,0 +1,27 @@
+.addContact {
+  height: 400px;
+  background: $color3;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 30px 30px;
+  &__form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__input {
+    width: 100%;
+    padding: 10px 25px 12px 15px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid $color2;
+  }
+  &__title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 0;
+    color: $color2;
+  }
+}

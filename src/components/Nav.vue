@@ -1,14 +1,14 @@
 <template>
   <nav class="nav">
-    <h2 class="page-header">{{pageTitle}}</h2>
+    <h2 class="nav__header">{{pageTitle}}</h2>
     <div class="buttonWrapper">
       <button
-        class="button addButton"
+        class="button button-addContact"
         v-on:click="$emit('toggleAddContactBar') "
         title="Add contact"
       ></button>
       <button
-        class="button toFavoritesButton"
+        class="button button-toFavorites"
         v-on:click="$emit('toggleFavoritesWrapper')"
         v-html="favoritedIcon"
         title="Favorites"
@@ -36,52 +36,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 15px 0;
-}
-.page-header {
-  color: #393f4d;
-  font-size: 2em;
-  margin: 0;
-}
-.buttonWrapper {
-  display: flex;
-}
-.button {
-  background: none;
-  border: none;
-  position: relative;
-  width: 50px;
-  height: 50px;
-  &:focus {
-    outline: none;
-  }
-  &.addButton {
-    &:before,
-    &:after {
-      content: "";
-      width: 25px;
-      position: absolute;
-      height: 5px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #393f4d;
-      border-radius: 25px;
-    }
-    &:before {
-      transform: translate(-50%, -50%) rotate(90deg);
-    }
-  }
-  &.toFavoritesButton {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-</style>

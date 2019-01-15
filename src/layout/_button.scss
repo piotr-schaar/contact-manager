@@ -1,0 +1,116 @@
+.button {
+  &:focus {
+    outline: none;
+  }
+  &Wrapper {
+    display: flex;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.button-delete,
+  &.button-addToFavorite {
+    background: none;
+    padding: 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+  &.button-addToFavorite {
+    padding: 10px;
+    .heart {
+      width: 25px;
+      height: 25px;
+    }
+    &.active {
+      .heart {
+        fill: $color2;
+      }
+    }
+  }
+  &.button-delete {
+    font-size: 20px;
+    width: 25px;
+    padding: 20px;
+    position: relative;
+    &:before,
+    &:after {
+      content: "";
+      height: 3px;
+      width: 60%;
+      position: absolute;
+      border-radius: 25px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $color2;
+      opacity: 0.9;
+    }
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+  &.button-submit {
+    padding: 15px 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    background: $color2;
+    color: $color3;
+  }
+  &.button-addContact,
+  &.button-toFavorites {
+    background: none;
+    border: none;
+    position: relative;
+    width: 50px;
+    height: 50px;
+  }
+  &.button-return {
+    color: $color2;
+    width: 15px;
+    height: 15px;
+    background: none;
+    position: relative;
+    border: solid $color2;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 10px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+  &.button-addContact {
+    &:before,
+    &:after {
+      content: "";
+      width: 25px;
+      position: absolute;
+      height: 5px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: $color2;
+      border-radius: 25px;
+    }
+    &:before {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+  &.button-toFavorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
