@@ -1,5 +1,12 @@
 # contact-manager
+App has been built to improve vue.js skills.
+
+features:
+  - adding contacts to main list
+  - adding to contacts to "favorites list"
+
 LIVE VERSION : https://contact-manager-pschaar.netlify.com/
+
 
 ## Project setup
 ```
@@ -15,21 +22,3 @@ yarn run serve
 ```
 yarn run build
 ```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
